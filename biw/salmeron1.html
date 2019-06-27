@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,7 +10,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: #000;
+        background-color: #FFFFFF;
       }
       a:link, a:visited{
         color: #bdc3c7;
@@ -29,7 +27,7 @@
         height: 5px;
         position: fixed;
         top: 0;
-        background: #fff;
+        background: #5CF1C2;
         -webkit-transition: opacity 0.5s ease;
         transition: opacity 0.5s ease;
       }
@@ -63,44 +61,20 @@
         }
       }
       // First panorama
-	panorama1 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/tcf/TCF_UnsafeArea.jpg');
-	panorama1.addEventListener( 'progress', onProgress );
-	panorama1.addEventListener( 'enter', onEnter );
+	panorama1 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/biw/BIW_20190627113349.jpg');panorama1.addEventListener( 'progress', onProgress );panorama1.addEventListener( 'enter', onEnter );
+	panorama2 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/biw/BIW_20190627113841.jpg');panorama1.addEventListener( 'progress', onProgress );panorama1.addEventListener( 'enter', onEnter );
+	panorama3 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/biw/BIW_20190627114230.jpg');panorama1.addEventListener( 'progress', onProgress );panorama1.addEventListener( 'enter', onEnter );
+	panorama4 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/biw/BIW_20190627114530.jpg');panorama1.addEventListener( 'progress', onProgress );panorama1.addEventListener( 'enter', onEnter );
 
 		viewer = new PANOLENS.Viewer({output: 'console'});
 		viewer.add(panorama1);
-
-var infospot1 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot2 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot3 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot4 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot5 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot6 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-var infospot7 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
-
-//INFORSPOTS FOR PANORAMA1
-infospot1.position.set(-5000.00, -321.57, -1123.94);
-infospot1.addHoverText('Reubicar checador');
-infospot2.position.set(-5000.00, -116.37, -2318.75);
-infospot2.addHoverText('Reubicar cargador');
-infospot3.position.set(-5000.00, 789.63, -4368.76);
-infospot3.addHoverText('Reubicar máquina de refrescos');
-infospot4.position.set(-3198.64, -567.67, -5000.00);
-infospot4.addHoverText('Reubicar botes de basura');
-infospot5.position.set(-5000.00, -1554.22, -9.41);
-infospot5.addHoverText('Guarda en escuadra');
-infospot6.position.set(-2711.55, -237.39, -5000.00);
-infospot6.addHoverText('Reubicar guardas y trazar pasillo peatonal');
-infospot7.position.set(5000.00, -2158.57, 768.77);
-infospot7.addHoverText('Colocación de línea roja, área restringida');
-
-panorama1.add(infospot1);
-panorama1.add(infospot2);
-panorama1.add(infospot3);
-panorama1.add(infospot4);
-panorama1.add(infospot5);
-panorama1.add(infospot6);
-panorama1.add(infospot7);
-
+		viewer.add(panorama2);
+		viewer.add(panorama3);
+		viewer.add(panorama4);
+		
+		panorama1.link( panorama2, new THREE.Vector3(5000.00, -958.88, 2702.55) );
+		panorama2.link( panorama3, new THREE.Vector3(-5000.00, -219.91, 306.42) );
+		panorama3.link( panorama4, new THREE.Vector3(-5000.00, -477.06, 1754.82) );
+		panorama4.link( panorama1, new THREE.Vector3(37.70, -536.88, -5000.00) );
 </script>
 </body>
