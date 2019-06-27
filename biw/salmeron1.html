@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+    <title>SVAP 360°</title>
+    <style>
+      html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+      }
+      a:link, a:visited{
+        color: #bdc3c7;
+      }
+      .credit{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        padding: 20px 0;
+        color: #fff;
+      }
+      #progress {
+        width: 0;
+        height: 5px;
+        position: fixed;
+        top: 0;
+        background: #fff;
+        -webkit-transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease;
+      }
+      #progress.finish {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- div class="credit"><a href="https://github.com/pchen66/panolens.js">Panolens.js</a> loading progress example. Image from <a href="http://adaptivesamples.com/tag/equirectangular/">Adaptive Samples</a></div -->
+
+    <div id="progress"></div>
+    
+    <script src="https://pchen66.github.io/js/three/three.min.js"></script>
+    <script src="https://pchen66.github.io/js/panolens/panolens.min.js"></script>
+
+    <script>
+      var panorama, panorama2, panorama3, viewer, progress, progressElement;
+      progressElement = document.getElementById( 'progress' );
+      function onEnter ( event ) {
+        progressElement.style.width = 0;
+        progressElement.classList.remove( 'finish' );
+      }
+      function onProgress ( event ) {
+        progress = event.progress.loaded / event.progress.total * 100;
+        progressElement.style.width = progress + '%';
+        if ( progress === 100 ) {
+          progressElement.classList.add( 'finish' );
+        }
+      }
+      // First panorama
+      panorama1 = new PANOLENS.ImagePanorama( 'https://sebastianlicea.github.io/svap/tcf/TCF_UnsafeArea.jpg');
+	  panorama1.addEventListener( 'progress', onProgress );
+      panorama1.addEventListener( 'enter', onEnter );
+
+		viewer = new PANOLENS.Viewer({output: 'console'});
+		viewer.add(panorama1);
+
+var infospot1 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot2 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot3 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot4 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot5 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot6 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+var infospot7 = new PANOLENS.Infospot(350,PANOLENS.DataImage.Info);
+
+//INFORSPOTS FOR PANORAMA1
+infospot1.position.set(-5000.00, -321.57, -1123.94);
+infospot1.addHoverText('Reubicar checador');
+infospot2.position.set(-5000.00, -116.37, -2318.75);
+infospot2.addHoverText('Reubicar cargador');
+infospot3.position.set(-5000.00, 789.63, -4368.76);
+infospot3.addHoverText('Reubicar máquina de refrescos');
+infospot4.position.set(-3198.64, -567.67, -5000.00);
+infospot4.addHoverText('Reubicar botes de basura');
+infospot5.position.set(-5000.00, -1554.22, -9.41);
+infospot5.addHoverText('Guarda en escuadra');
+infospot6.position.set(-2711.55, -237.39, -5000.00);
+infospot6.addHoverText('Reubicar guardas y trazar pasillo peatonal');
+infospot7.position.set(5000.00, -2158.57, 768.77);
+infospot7.addHoverText('Colocación de línea roja, área restringida');
+
+panorama1.add(infospot1);
+panorama1.add(infospot2);
+panorama1.add(infospot3);
+panorama1.add(infospot4);
+panorama1.add(infospot5);
+panorama1.add(infospot6);
+panorama1.add(infospot7);
+
+</script>
+</body>
